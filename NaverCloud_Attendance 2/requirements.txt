@@ -1,0 +1,15 @@
+Flask==2.0.1
+Werkzeug==2.0.3
+Flask-SQLAlchemy==2.5.1
+SQLAlchemy==1.4.23
+Flask-Migrate==3.1.0
+alembic==1.7.7
+gunicorn==20.1.0
+python-dotenv==0.19.0
+mysqlclient==2.0.3  # MySQL을 사용하는 경우
+flask-session==0.4.0  # 세션 관리를 위한 패키지
+pytz==2022.1  # 시간대 처리를 위한 패키지
+click==8.0.3  # Flask CLI 도구
+itsdangerous==2.0.1  # Flask 의존성
+Jinja2==3.0.3  # Flask 템플릿 엔진
+MarkupSafe==2.0.1  # Jinja2 의존성

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container py-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h2 class="text-center mb-0 h4 fw-bold">네이버 팀 출퇴근 현황</h2>
+        </div>
+        
+        <div class="card-body">
+            <div class="row align-items-center mb-4">
+                <div class="col-auto">
+                    <div class="input-group">
+                        <span class="input-group-text">현재 시각</span>
+                        <input type="text" id="currentTime" class="form-control" style="width: 150px;" readonly>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="btn-group">
+                        <button class="btn btn-secondary" id="resetBtn">초기화</button>
+                        <button class="btn btn-primary" id="refreshBtn">새로고침</button>
+                        <button class="btn btn-info" id="copyBtn">현황 복사</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="alertContainer"></div>
+
+            <pre id="reportText" class="bg-light p-3 rounded mb-4" style="white-space: pre-wrap;"></pre>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>이름</th>
+                            <th>출근 시간</th>
+                            <th>출근 상태</th>
+                            <th>퇴근 시간</th>
+                            <th>퇴근 상태</th>
+                            <th>상태 정보</th>
+                            <th>작업</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendanceTable"></tbody>
+                </table>
+            </div>
+
+            <div class="loading text-center d-none">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 출퇴근 입력 모달 -->
+<div class="modal fade" id="attendanceModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="modalName">
+                <input type="hidden" id="modalType">
+                <div class="mb-3">
+                    <label for="modalTime" class="form-label">시간</label>
+                    <input type="time" class="form-control" id="modalTime">
+                </div>
+                <div class="mb-3" id="reasonContainer">
+                    <label for="modalReason" class="form-label">사유</label>
+                    <textarea class="form-control" id="modalReason" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-primary" id="modalSubmit">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
